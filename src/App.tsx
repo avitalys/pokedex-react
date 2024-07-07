@@ -49,7 +49,7 @@ function App() {
           <CardFront
             id={pokemon.id}
             name={pokemon.name}
-            image={pokemon.sprites.front_default}
+            images={pokemon.sprites}
             types={pokemon.types}
             key={pokemon.id}
             height={pokemon.height}

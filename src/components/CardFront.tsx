@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { PokemonStat, PokemonType } from "../types";
+import { PokemonStat, PokemonType, PokemonSprites } from "../types";
 import { typeColor } from "../utils/colors";
 
 interface PokemonCardProps {
   id: number;
   name: string;
-  image: string;
+  images: PokemonSprites;
   types: PokemonType[];
   key: string | number;
   height: number;
@@ -16,7 +16,7 @@ interface PokemonCardProps {
 const CardFront = ({
   id,
   name,
-  image,
+  images,
   types,
   height,
   weight,
@@ -49,7 +49,7 @@ const CardFront = ({
         <span>HP </span>
         {hp}
       </p>
-      <img src={image} />
+      <img src={images.front_default} />
       <h2 className="poke-name">{pokeName}</h2>
       <div className="types">
         {types.map((item) => (

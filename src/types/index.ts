@@ -25,9 +25,7 @@ export interface Pokemon {
   order: number;
   weight: number;
   height: number;
-  sprites: {
-    front_default: string;
-  };
+  sprites: PokemonSprites;
   moves: {
     move: {
       name: string;
@@ -35,6 +33,11 @@ export interface Pokemon {
   };
   types: PokemonType[];
   stats: PokemonStat[];
+}
+
+export interface PokemonSprites {
+  front_default: string;
+  back_default: string;
 }
 
 export interface PokemonType {
