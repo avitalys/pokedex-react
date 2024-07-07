@@ -35,12 +35,12 @@ const CardFront = ({
 
   // type's Span style, by type name
   const typeStyle = (name: string) => {
-    return { backgroundColor: `${typeColor[name]}` };
+    return { backgroundColor: `${typeColor[name][0]}` };
   };
 
   // Card's background
   const backgroundStyle = {
-    background: `radial-gradient(circle at 50% 0%, ${themeColor} 36%, #ffffff 36%)`,
+    background: `radial-gradient(circle at 50% 0%, ${themeColor[0]} 10%, ${themeColor[1]} 45%, #ffffff 36%)`,
   };
 
   return (
