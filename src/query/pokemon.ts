@@ -13,6 +13,7 @@ export const PokemonQuery = `
         height
         sprites {
           front_default
+          back_default
         }
         moves {
           move {

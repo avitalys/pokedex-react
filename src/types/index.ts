@@ -44,7 +44,7 @@ export interface PokemonType {
 }
 
 export interface PokemonStat {
-  base_state: number;
+  base_stat: number;
   stat: {
     name: string;
   };

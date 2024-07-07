@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import PokemonThumbnail from "./components/PokemonTumbnail";
+import React, { useEffect } from "react";
+import CardFront from "./components/CardFront";
 import type { PokemonsListResult, Pokemon } from "./types";
 import { fetchPokemonDetails } from "./query/pokemon";
 import { fetchPokemonsList } from "./query/pokemonsList";
 import usePagination from "./hooks/useGeneratorPagination";
+import "./App.css";
 
 const getMorePokemons = async (limit = 10, offset = 0) => {
   const data = await fetchPokemonsList(limit, offset);
@@ -41,35 +42,32 @@ function App() {
   // }, [second]);
 
   return (
-    <div className="app-container">
+    <div className="container">
       <h1>Pokemon Kingdom</h1>
-
-      <div className="pokemon-container">
-        <div className="all-container">
-          {data.map((pokemon, index) => (
-            <PokemonThumbnail
-              id={pokemon.id}
-              name={pokemon.name}
-              image={pokemon.sprites.front_default}
-              types={pokemon.types}
-              key={pokemon.id}
-              height={pokemon.height}
-              weight={pokemon.weight}
-              stats={pokemon.stats}
-            />
-          ))}
-        </div>
-
-        {error ? <div>error.message</div> : ""}
-
-        {isLoading ? (
-          "loading..."
-        ) : (
-          <button className="load-more" onClick={() => fetchNextPage.next()}>
-            More Pokemons
-          </button>
-        )}
+      <div className="">
+        {data.map((pokemon, index) => (
+          <CardFront
+            id={pokemon.id}
+            name={pokemon.name}
+            image={pokemon.sprites.front_default}
+            types={pokemon.types}
+            key={pokemon.id}
+            height={pokemon.height}
+            weight={pokemon.weight}
+            stats={pokemon.stats}
+          />
+        ))}
       </div>
+
+      {error ? <div>error.message</div> : ""}
+
+      {isLoading ? (
+        "loading..."
+      ) : (
+        <button className="load-more" onClick={() => fetchNextPage.next()}>
+          More Pokemons
+        </button>
+      )}
     </div>
   );
 }
