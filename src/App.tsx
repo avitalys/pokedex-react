@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import CardFront from "./components/CardFront";
+import Card from "./components/Card";
 import type { PokemonsListResult, Pokemon } from "./types";
 import { fetchPokemonDetails } from "./query/pokemon";
 import { fetchPokemonsList } from "./query/pokemonsList";
@@ -46,7 +46,7 @@ function App() {
       <h1 className="app-header">PokeDex-Dev</h1>
       <div className="container">
         {data.map((pokemon, index) => (
-          <CardFront
+          <Card
             id={pokemon.id}
             name={pokemon.name}
             images={pokemon.sprites}

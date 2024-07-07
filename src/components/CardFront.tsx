@@ -1,17 +1,6 @@
-import React, { useState } from "react";
-import { PokemonStat, PokemonType, PokemonSprites } from "../types";
+import React from "react";
 import { typeColor } from "../utils/colors";
-
-interface PokemonCardProps {
-  id: number;
-  name: string;
-  images: PokemonSprites;
-  types: PokemonType[];
-  key: string | number;
-  height: number;
-  weight: number;
-  stats: PokemonStat[];
-}
+import { PokemonCardProps } from "./Card";
 
 const CardFront = ({
   id,
@@ -22,8 +11,6 @@ const CardFront = ({
   weight,
   stats,
 }: PokemonCardProps) => {
-  const [show, setShow] = useState(false);
-
   const pokeName = name[0].toUpperCase() + name.slice(1);
   const hp = stats[0].base_stat;
   const statAttack = stats[1].base_stat;
@@ -44,7 +31,10 @@ const CardFront = ({
   };
 
   return (
-    <div className="card" style={backgroundStyle}>
+    <div className="card-front" style={backgroundStyle}>
+      <p className="id">
+        <span>#{id}</span>
+      </p>
       <p className="hp">
         <span>HP </span>
         {hp}

@@ -34,19 +34,51 @@ body {
 }
 
 .card {
-  position: relative;
-  width: 80%;
-  padding: 18px;
   margin: 18px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-  border-radius: 16px;
+  height: 400px;
+  width: 80%;
+  background-color: transparent;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
-.card img {
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.card:hover .flip-card-inner,
+.card:active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card-front img,
+.card-back img {
   display: block;
   width: 65%;
   position: relative;
   margin: auto;
+}
+
+.card-back {
+  transform: rotateY(180deg);
 }
 
 .hp {
@@ -56,7 +88,7 @@ body {
   padding: 8px 0;
   border-radius: 30px;
   margin-left: auto;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .poke-name {
