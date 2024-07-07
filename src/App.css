@@ -1,6 +1,6 @@
 :root {
   color-scheme: light dark;
-  /* color: rgba(255, 255, 255, 0.87); */
+  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -20,12 +20,17 @@ body {
   background-color: white;
 }
 
+.app-header {
+  position: fixed;
+}
+
 .container {
   width: 350px;
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
+  transform: translate(-50%, 0);
+  top: 10%;
   left: 50%;
+  color: black;
 }
 
 .card {
@@ -40,7 +45,6 @@ body {
 .card img {
   display: block;
   width: 65%;
-  /* max-height: 200px; */
   position: relative;
   margin: auto;
 }

@@ -42,9 +42,9 @@ function App() {
   // }, [second]);
 
   return (
-    <div className="container">
-      <h1>Pokemon Kingdom</h1>
-      <div className="">
+    <div className="">
+      <h1 className="app-header">PokeDex-Dev</h1>
+      <div className="container">
         {data.map((pokemon, index) => (
           <CardFront
             id={pokemon.id}
@@ -58,7 +58,7 @@ function App() {
           />
         ))}
       </div>
-
+      {/* 
       {error ? <div>error.message</div> : ""}
 
       {isLoading ? (
@@ -67,7 +67,7 @@ function App() {
         <button className="load-more" onClick={() => fetchNextPage.next()}>
           More Pokemons
         </button>
-      )}
+      )} */}
     </div>
   );
 }
