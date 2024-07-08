@@ -43,7 +43,7 @@ const CardFront = ({
       <h2 className="poke-name">{pokeName}</h2>
       <div className="types">
         {types.map((item) => (
-          <span key={name + id} style={typeStyle(item.type.name)}>
+          <span key={name + item.type.name} style={typeStyle(item.type.name)}>
             {item.type.name}
           </span>
         ))}
