@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Card from "./components/Card";
+import InfiniteScroller from "./components/InfiniteScroller";
 import type { PokemonsListResult, Pokemon } from "./types";
 import { fetchPokemonDetails } from "./query/pokemon";
 import { fetchPokemonsList } from "./query/pokemonsList";
@@ -16,7 +17,7 @@ const getMorePokemons = async (limit = 10, offset = 0) => {
     await Promise.all(
       results.map(async (pokemon) => {
         const data = await fetchPokemonDetails(pokemon.name);
-        console.log(data);
+        //console.log(data);
         newPokemons.push(data.pokemon);
       })
     );
@@ -37,37 +38,31 @@ function App() {
     fetchNextPage.next();
   }, []);
 
-  // useCallback(() => {
-  //   first;
-  // }, [second]);
-
   return (
     <div className="">
       <h1 className="app-header">PokeDex-Dev</h1>
-      <div className="container">
-        {data.map((pokemon, index) => (
-          <Card
-            id={pokemon.id}
-            name={pokemon.name}
-            images={pokemon.sprites}
-            types={pokemon.types}
-            key={pokemon.id}
-            height={pokemon.height}
-            weight={pokemon.weight}
-            stats={pokemon.stats}
-          />
-        ))}
-      </div>
-      {/* 
-      {error ? <div>error.message</div> : ""}
 
-      {isLoading ? (
-        "loading..."
-      ) : (
-        <button className="load-more" onClick={() => fetchNextPage.next()}>
-          More Pokemons
-        </button>
-      )} */}
+      <div className="container">
+        <InfiniteScroller
+          callback={async () => {
+            await fetchNextPage.next();
+          }}
+          isLoading={isLoading}
+        >
+          {data.map((pokemon, index) => (
+            <Card
+              id={pokemon.id}
+              name={pokemon.name}
+              images={pokemon.sprites}
+              types={pokemon.types}
+              key={pokemon.id}
+              height={pokemon.height}
+              weight={pokemon.weight}
+              stats={pokemon.stats}
+            />
+          ))}
+        </InfiniteScroller>
+      </div>
     </div>
   );
 }
